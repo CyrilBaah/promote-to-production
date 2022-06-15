@@ -17,6 +17,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: AWS login
+          command: |
+          aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
+          aws configure set aws_secret_access_key ${AWS_SECRET_KEY}
+      - run:
           name: Execute bucket.yml - Create Cloudformation Stack
           command: |
             aws cloudformation deploy \
